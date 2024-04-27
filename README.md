@@ -20,4 +20,4 @@ Begineer Folder
 
 Intermediate Folder
     Week 3 - Intermediate projects
-        D15 - 
+        D15 - Coffee Machine project (consolidated project)
