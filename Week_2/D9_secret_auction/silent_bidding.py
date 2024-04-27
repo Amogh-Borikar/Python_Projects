@@ -26,7 +26,7 @@ while next_bidder == "yes":
       os.system('cls')
     # Clear the terminal in Linux and macOS
     else:
-      os.system('clear')    
+      os.system('clear')
     
     max_bid = 0
     winner = ""
