@@ -34,7 +34,7 @@ resources = {
 def resources_sufficient(user):
     for i in MENU[user]["ingredients"]:
         if MENU[user]["ingredients"][i] > resources[i]:
-            print(f"Sorry, {i} is not sufficient.")
+            print(f"Sorry, {i} is not sufficient. for {user}, try another drink or try again.")
             return False
         else:
             return True
@@ -54,7 +54,7 @@ def transaction_check(process_op, drink_cost):
         print(f"here is your change : ${round(process_op - drink_cost, 2)}.")
         return True
     else:
-        print(f"You are short of : ${drink_cost - process_op} to buy this drink, try again.")
+        print(f"You are short of : ${round(drink_cost - process_op, 2)} to buy this drink, try again.")
         return False
 
 
@@ -89,11 +89,12 @@ while coffee_machine_on:
             "milk": 200,
             "coffee": 100,
         }
-    elif (user_input == "espresso" or user_input == "latte" or user_input == "cappuccino") and resources_sufficient(user_input):
-        if transaction_check(process_money(), MENU[user_input]["cost"]):
-            print(f"Here is your {user_input}, Enjoy! ☕")
-            money += MENU[user_input]["cost"]
-            for i in MENU[user_input]["ingredients"]:
-                resources[i] -= MENU[user_input]["ingredients"][i]
+    elif user_input == "espresso" or user_input == "latte" or user_input == "cappuccino" :
+        if resources_sufficient(user_input):
+            if transaction_check(process_money(), MENU[user_input]["cost"]):
+                print(f"Here is your {user_input}, Enjoy! ☕")
+                money += MENU[user_input]["cost"]
+                for i in MENU[user_input]["ingredients"]:
+                    resources[i] -= MENU[user_input]["ingredients"][i]
     else:
-        coffee_machine_on = False
+        print("Try again!")
