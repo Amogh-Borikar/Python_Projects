@@ -30,3 +30,4 @@ while game_is_on:
 
 my_screen.exitonclick()
 
+
