@@ -21,3 +21,7 @@ Begineer Folder
 Intermediate Folder
     Week 3 - Intermediate projects
         D15 - Coffee Machine project (consolidated project)
+        D16 - OOP Coffee Machine (project)
+        D17 - The Quiz game (creating classes)
+        D18 - Turtle and GUI, Hirst painting Project
+        D19 - 
