@@ -24,4 +24,9 @@ Intermediate Folder
         D16 - OOP Coffee Machine (project)
         D17 - The Quiz game (creating classes)
         D18 - Turtle and GUI, Hirst painting Project
-        D19 - 
+        D19 - Etch a Sketch & Turtle race at random pace
+        D20 - Snake game P1
+        D21 - Snake game P2
+        D22 - Pong game
+        D23 - Turtle crossing capstone project
+        D24 - Snake game with high score tracking (creating new file and storing data) and letter merge
