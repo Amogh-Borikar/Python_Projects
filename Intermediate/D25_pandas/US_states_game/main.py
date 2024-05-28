@@ -18,10 +18,11 @@ while len(guessed_states) < 50:
                                      prompt="Type the U.S. state name").title()
 
     if answer_state == "Exit":
-        missing_states = []
-        for s in state_list:
-            if s not in guessed_states:
-                missing_states.append(s)
+        missing_states = [s for s in state_list if s not in guessed_states]
+        # missing_states = []
+        # for s in state_list:
+        #     if s not in guessed_states:
+        #         missing_states.append(s)
         new_data = pd.DataFrame(missing_states)
         new_data.to_csv("Intermediate/D25_pandas/US_states_game/states_to_learn.csv")
         break
