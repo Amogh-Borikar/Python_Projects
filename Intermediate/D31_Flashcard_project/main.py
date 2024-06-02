@@ -3,10 +3,17 @@ import pandas as pd
 import random
 
 BACKGROUND_COLOR = "#B1DDC6"
-
-data = pd.read_csv("Intermediate/D31_Flashcard_project/data/french_words.csv")
-to_learn = data.to_dict(orient="records")
 current_card = {}
+to_learn = {}
+
+try:
+    data = pd.read_csv("Intermediate/D31_Flashcard_project/data/words_to_learn.csv")
+except FileNotFoundError:
+    original_data = pd.read_csv("Intermediate/D31_Flashcard_project/data/french_words.csv")
+    to_learn = original_data.to_dict(orient="records")
+else:
+    to_learn = data.to_dict(orient="records")
+
 
 def next_card():
     global current_card, flip_timer
@@ -21,6 +28,13 @@ def flip_card():
     canvas.itemconfig(card_title, text="English", fill="white")
     canvas.itemconfig(card_word, text=current_card["English"], fill="white")
     canvas.itemconfig(card_background, image=card_back)
+
+def known_word():
+    to_learn.remove(current_card)
+    data = pd.DataFrame(to_learn)
+    data.to_csv("Intermediate/D31_Flashcard_project/data/words_to_learn.csv", index=False)
+    next_card()
+
 
 window = Tk()
 window.title("Amogh's Flashcards")
@@ -45,7 +59,7 @@ cross_button = Button(image=cross, highlightthickness=0, command=next_card)
 cross_button.grid(column=0, row=1)
 
 right = PhotoImage(file="Intermediate/D31_Flashcard_project/images/right.png")
-right_button = Button(image=right, highlightthickness=0, command=next_card)
+right_button = Button(image=right, highlightthickness=0, command=known_word)
 right_button.grid(column=1, row=1)
 
 next_card()
